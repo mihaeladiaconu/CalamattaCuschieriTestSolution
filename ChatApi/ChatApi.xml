@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ChatApi</name>
+    </assembly>
+    <members>
+        <member name="T:ChatApi.Controllers.ChatController">
+            <summary>
+            Chat API
+            </summary>
+        </member>
+        <member name="M:ChatApi.Controllers.ChatController.Send(ChatApi.Models.ChatModel)">
+            <summary>
+            Sends a message to an available agent
+            </summary>
+            <param name="chatModel">Input chat message</param>
+            <response code="200">Message was sent successfully</response>  
+            <response code="400">Invalid message</response>  
+            <response code="422">No agents available to process the message</response>
+        </member>
+        <member name="T:ChatApi.Models.ChatModel">
+            <summary>
+            Input chat model
+            </summary>
+        </member>
+        <member name="P:ChatApi.Models.ChatModel.Message">
+            <summary>
+            Message text
+            </summary>
+        </member>
+    </members>
+</doc>
