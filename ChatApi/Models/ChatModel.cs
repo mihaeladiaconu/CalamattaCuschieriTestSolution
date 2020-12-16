@@ -1,4 +1,6 @@
-﻿namespace ChatApi.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace ChatApi.Models
 {
     /// <summary>
     /// Input chat model
@@ -8,6 +10,7 @@
         /// <summary>
         /// Message text
         /// </summary>
+        [Required]
         public string Message { get; set; }
     }
 }
