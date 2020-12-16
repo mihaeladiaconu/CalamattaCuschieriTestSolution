@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Text;
-using ChatApi.Infrastructure;
+using ChatApi.Configuration;
+using ChatInfrastructure;
+using ChatInfrastructure.Repositories;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using RabbitMQ.Client;
@@ -29,10 +31,15 @@ namespace ChatApi.Services
 
             using (var channel = _connection.CreateModel())
             {
-                channel.QueueDeclare(queue: _queueName, durable: false, exclusive: false, autoDelete: false, arguments: null);
+                var queue = channel.QueueDeclare(queue: _queueName, durable: false, exclusive: false, autoDelete: false, arguments: null);
+
+                var team = AvailableTeamsRepository.GetTeam();
+                var teamCapacity = team.GetCapacity();
+
+                if (queue.MessageCount == teamCapacity)
+                    return false;
 
                 var body = Encoding.UTF8.GetBytes(message);
-
                 channel.BasicPublish(exchange: "", routingKey: _queueName, basicProperties: null, body: body);
             }
 

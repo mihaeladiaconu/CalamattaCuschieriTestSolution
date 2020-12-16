@@ -1,4 +1,4 @@
-﻿namespace ChatApi.Infrastructure
+﻿namespace ChatApi.Configuration
 {
     public class RabbitMqConfiguration
     {

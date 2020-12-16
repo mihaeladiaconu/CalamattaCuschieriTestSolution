@@ -13,18 +13,19 @@ namespace ChatClient
 
         static async Task Main(string[] args)
         {
-            await PostMessage("Helloooo");
+            await PostMessage("Hello");
         }
 
         private static async Task PostMessage(string message)
         {
             Console.WriteLine("Starting chat session...");
 
-            var json = JsonConvert.SerializeObject(new {message});
             var isSuccessStatusCode = true;
 
             while (isSuccessStatusCode)
             {
+                var json = JsonConvert.SerializeObject(new { message = $"[{DateTime.Now.ToLongTimeString()}] {message}" });
+
                 var response = await Client
                     .PostAsync("https://localhost:44305/api/chat", new StringContent(json, Encoding.UTF8, "application/json"))
                     .ConfigureAwait(false);
