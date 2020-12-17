@@ -42,6 +42,7 @@ namespace ChatCoordinator
                     agents.Enqueue(agent);
 
                     assignedAgent = agent;
+                    break;
                 }
 
                 if (isChatAssigned) break;

@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Text;
 using ChatApi.Configuration;
-using ChatInfrastructure;
 using ChatInfrastructure.Repositories;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;

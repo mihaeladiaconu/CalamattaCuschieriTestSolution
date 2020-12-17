@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Text;
-using ChatInfrastructure;
 using ChatInfrastructure.Repositories;
 using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
@@ -36,7 +35,7 @@ namespace ChatCoordinator
                 {
                     var message = Encoding.UTF8.GetString(eventArguments.Body.ToArray());
                     
-                    Console.WriteLine($"Assigning message {message} to agent...");
+                    Console.WriteLine($"Assigning message {message} to an agent...");
 
                     var assignedAgent = agentChatCoordinatorService.AssignChat(message);
 
